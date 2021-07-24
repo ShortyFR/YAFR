@@ -1,5 +1,6 @@
-import { StyleSheet } from "react-native";
-import { Theme } from "react-native-paper/lib/typescript/types";
+import { Theme as NavigationTheme } from "@react-navigation/native";
+import { Theme as PaperTheme } from "react-native-paper/lib/typescript/types";
+import { DefaultTheme } from "react-native-paper";
 
 /*
 #####  Color Palette by Paletton.com
@@ -96,10 +97,25 @@ export const winterColors = {
   border: "#7E99D7",
 };
 
-export const ThemeStyles = (theme: Theme) =>
-  StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: theme.colors.background,
+export type AppTheme = PaperTheme & NavigationTheme & { name: string };
+
+export const themes: AppTheme[] = [
+  {
+    ...DefaultTheme,
+    dark: true,
+    name: "winter",
+    colors: {
+      ...DefaultTheme.colors,
+      ...winterColors,
     },
-  });
+  },
+  {
+    ...DefaultTheme,
+    dark: true,
+    name: "autumn",
+    colors: {
+      ...DefaultTheme.colors,
+      ...autumnColors,
+    },
+  },
+];

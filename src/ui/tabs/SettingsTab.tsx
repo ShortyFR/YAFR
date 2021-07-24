@@ -1,5 +1,9 @@
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  StackHeaderProps,
+} from "@react-navigation/stack";
 import React from "react";
+import Header from "../components/Header";
 import SettingsScreen from "../screens/SettingsScreen";
 
 export type SettingsStackParamList = {
@@ -11,7 +15,10 @@ export const SettingsStackNavigator =
 
 const SettingsStack = () => {
   return (
-    <SettingsStackNavigator.Navigator>
+    <SettingsStackNavigator.Navigator
+      screenOptions={{
+        header: (props: StackHeaderProps) => <Header {...props} />,
+      }}>
       <SettingsStackNavigator.Screen
         name="Settings"
         component={SettingsScreen}

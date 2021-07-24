@@ -1,27 +1,23 @@
 import React from "react";
-import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
-import {
-  NavigationContainer,
-  Theme as NavigationTheme,
-} from "@react-navigation/native";
+import { Provider as PaperProvider } from "react-native-paper";
+import { NavigationContainer } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { autumnColors, winterColors } from "./ui/Theme";
+import { AppTheme, themes } from "./ui/Theme";
 import { StatusBar } from "react-native";
 import { RootStackParamList, Tabs } from "./ui/tabs/TabList";
-import { Theme as PaperTheme } from "react-native-paper/lib/typescript/types";
 import { useStore } from "react-hookstore";
 import { themeNameStore } from "./store/SettingsStore";
 
 export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
 
 const TabNavigator = createMaterialBottomTabNavigator<RootStackParamList>();
-const App = ({ theme }: { theme: PaperTheme & NavigationTheme }) => {
+const App = ({ theme }: { theme: AppTheme }) => {
   return (
     <NavigationContainer theme={theme}>
       <StatusBar
         barStyle="light-content"
-        backgroundColor={theme.colors.surface}
+        backgroundColor={theme.colors.background}
       />
       <TabNavigator.Navigator shifting={false}>
         {Tabs.map(tab => (
@@ -39,13 +35,8 @@ const App = ({ theme }: { theme: PaperTheme & NavigationTheme }) => {
 
 const PaperApp = () => {
   const [themeName] = useStore(themeNameStore);
-  const theme: PaperTheme & NavigationTheme = {
-    ...DefaultTheme,
-    colors: {
-      ...DefaultTheme.colors,
-      ...(themeName === "winter" ? winterColors : autumnColors),
-    },
-  };
+  const theme: AppTheme =
+    themes.filter(item => item.name === themeName)[0] || themes[0];
   return (
     <PaperProvider theme={theme}>
       <App theme={theme} />

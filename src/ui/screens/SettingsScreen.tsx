@@ -2,26 +2,25 @@ import React from "react";
 import { useStore } from "react-hookstore";
 import { View } from "react-native";
 import { Drawer } from "react-native-paper";
-import { withTheme } from "react-native-paper";
-import { Theme } from "react-native-paper/lib/typescript/types";
 import { themeNameStore } from "../../store/SettingsStore";
-import { ThemeStyles } from "../Theme";
+import { themes } from "../Theme";
 
-const SettingsScreen = ({ theme }: { theme: Theme }) => {
+const SettingsScreen = () => {
   const [themeName, setThemeName] = useStore<string>(themeNameStore);
 
+  console.log(themeName);
+
   return (
-    <View style={ThemeStyles(theme).container}>
-      <Drawer.Section title="Theme" theme={theme}>
-        {["winter", "autumn"].map(themeItem => {
+    <View>
+      <Drawer.Section title="Theme">
+        {themes.map(themeItem => {
           return (
             <Drawer.Item
-              key={themeItem}
-              label={themeItem}
+              key={themeItem.name}
+              label={themeItem.name}
               icon="palette"
-              active={themeName === themeItem}
-              onPress={() => setThemeName(themeItem)}
-              theme={theme}
+              active={themeName === themeItem.name}
+              onPress={() => setThemeName(themeItem.name)}
             />
           );
         })}
@@ -30,4 +29,4 @@ const SettingsScreen = ({ theme }: { theme: Theme }) => {
   );
 };
 
-export default withTheme(SettingsScreen);
+export default SettingsScreen;
