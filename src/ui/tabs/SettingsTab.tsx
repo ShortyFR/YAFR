@@ -1,9 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { withTheme } from "react-native-paper";
-import { Theme } from "react-native-paper/lib/typescript/types";
 import SettingsScreen from "../screens/SettingsScreen";
-import { themeScreenOptions } from "../Theme";
 
 export type SettingsStackParamList = {
   Settings: undefined;
@@ -12,9 +9,9 @@ export type SettingsStackParamList = {
 export const SettingsStackNavigator =
   createStackNavigator<SettingsStackParamList>();
 
-const SettingsStack = ({ theme }: { theme: Theme }) => {
+const SettingsStack = () => {
   return (
-    <SettingsStackNavigator.Navigator screenOptions={themeScreenOptions(theme)}>
+    <SettingsStackNavigator.Navigator>
       <SettingsStackNavigator.Screen
         name="Settings"
         component={SettingsScreen}
@@ -23,4 +20,4 @@ const SettingsStack = ({ theme }: { theme: Theme }) => {
   );
 };
 
-export default withTheme(SettingsStack);
+export default SettingsStack;

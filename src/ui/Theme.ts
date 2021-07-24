@@ -36,14 +36,16 @@ import { Theme } from "react-native-paper/lib/typescript/types";
 export const autumnColors = {
   primary: "#FFF8F8",
   accent: "#FA7C7C",
-  background: "#230003",
-  surface: "#1C0012",
+  background: "#1E0000",
+  surface: "#230003",
   text: "#FFF8F8",
   disabled: "#AE3B46",
   placeholder: "#AE3B46",
   backdrop: "#230003",
   onSurface: "#E4C5AF",
   notification: "#FFB2B2",
+  card: "#230003",
+  border: "#FFB2B2",
 };
 
 /*
@@ -82,23 +84,16 @@ export const autumnColors = {
 export const winterColors = {
   primary: "#D7E0F6",
   accent: "#7E99D7",
-  background: "#0B1A3E",
-  surface: "#180C40",
+  background: "#020816",
+  surface: "#0B1A3E",
   text: "#D7E0F6",
   disabled: "#2F4474",
   placeholder: "#2F4474",
   backdrop: "#0B1A3E",
   onSurface: "#E4C5AF",
   notification: "#7E99D7",
-};
-
-export const themeScreenOptions = (theme: Theme) => {
-  return {
-    headerStyle: {
-      backgroundColor: theme.colors.background,
-    },
-    headerTintColor: theme.colors.primary,
-  };
+  card: "#0B1A3E",
+  border: "#7E99D7",
 };
 
 export const ThemeStyles = (theme: Theme) =>
