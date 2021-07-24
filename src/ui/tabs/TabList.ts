@@ -1,3 +1,4 @@
+import I18n from "react-native-i18n";
 import FeedStack from "./FeedTab";
 import SettingsStack from "./SettingsTab";
 
@@ -14,13 +15,13 @@ export const Tabs: {
 }[] = [
   {
     name: "FeedTab",
-    label: "Feed",
+    label: I18n.t("tabs.feed"),
     component: FeedStack,
     icon: "home",
   },
   {
     name: "SettingsTab",
-    label: "Settings",
+    label: I18n.t("tabs.settings"),
     component: SettingsStack,
     icon: "cog",
   },

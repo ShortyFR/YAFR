@@ -8,6 +8,9 @@ import { StatusBar } from "react-native";
 import { RootStackParamList, Tabs } from "./ui/tabs/TabList";
 import { useStore } from "react-hookstore";
 import { themeNameStore } from "./store/SettingsStore";
+import { initI18N } from "./utils/i18n/i18n";
+
+initI18N();
 
 export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
 
