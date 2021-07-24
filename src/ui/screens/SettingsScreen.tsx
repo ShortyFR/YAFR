@@ -8,8 +8,6 @@ import { themes } from "../Theme";
 const SettingsScreen = () => {
   const [themeName, setThemeName] = useStore<string>(themeNameStore);
 
-  console.log(themeName);
-
   return (
     <View>
       <Drawer.Section title="Theme">
